@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stanley Website V2 Typography Samples</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Public+Sans:wght@400;500;700;800&family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #efebe4;
+        --panel: #f7f4ee;
+        --panel-strong: #f0ece5;
+        --text: #1f2529;
+        --muted: #5a646c;
+        --line: #d8d2c8;
+        --brand: #2d5b66;
+        --brand-strong: #223f47;
+        --accent: #a8643a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at top left, rgba(168, 100, 58, 0.1), transparent 28%),
+          linear-gradient(180deg, #f4f0e9 0%, #ebe7df 100%);
+        color: var(--text);
+      }
+
+      .page {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 48px 20px 96px;
+      }
+
+      .intro {
+        margin-bottom: 36px;
+        font-family: Arial, sans-serif;
+      }
+
+      .intro h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 0.96;
+        letter-spacing: -0.04em;
+      }
+
+      .intro p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .sample {
+        margin-top: 28px;
+        padding: 28px;
+        border: 1px solid rgba(31, 37, 41, 0.08);
+        border-radius: 28px;
+        background: rgba(247, 244, 238, 0.92);
+        box-shadow: 0 28px 70px rgba(31, 37, 41, 0.06);
+      }
+
+      .sample-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: end;
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .sample-kicker {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .sample-header h2 {
+        margin: 0;
+        font-size: 1.7rem;
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .sample-header p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        max-width: 760px;
+        line-height: 1.55;
+      }
+
+      .font-note {
+        color: var(--brand);
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      .preview-shell {
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(180deg, #f6f2eb 0%, #f0ebe3 100%);
+      }
+
+      .preview-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .wordmark {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 22px;
+        padding: 24px;
+      }
+
+      .hero-copy {
+        padding: 18px 6px 10px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(45, 91, 102, 0.08);
+        color: var(--brand);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h3 {
+        max-width: 12ch;
+        margin: 18px 0 12px;
+        font-size: clamp(2.5rem, 5vw, 4.7rem);
+        line-height: 0.95;
+        letter-spacing: -0.055em;
+      }
+
+      .hero p {
+        max-width: 58ch;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.68;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #f7f4ee;
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.45);
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .proof {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.36);
+      }
+
+      .proof strong {
+        display: block;
+        font-size: 1.18rem;
+        line-height: 1.05;
+      }
+
+      .proof span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+
+      .hero-panel {
+        position: relative;
+        min-height: 100%;
+        padding: 18px;
+        border: 1px solid rgba(45, 91, 102, 0.16);
+        border-radius: 24px;
+        background:
+          linear-gradient(135deg, rgba(45, 91, 102, 0.09), rgba(247, 244, 238, 0.2)),
+          var(--panel-strong);
+      }
+
+      .portrait {
+        min-height: 300px;
+        border-radius: 20px;
+        background:
+          linear-gradient(140deg, rgba(168, 100, 58, 0.18), transparent 35%),
+          linear-gradient(180deg, rgba(45, 91, 102, 0.12), rgba(34, 63, 71, 0.02)),
+          repeating-linear-gradient(
+            90deg,
+            rgba(45, 91, 102, 0.08),
+            rgba(45, 91, 102, 0.08) 1px,
+            transparent 1px,
+            transparent 22px
+          ),
+          linear-gradient(180deg, #d9d2c7 0%, #cbc2b6 100%);
+      }
+
+      .overlay-card {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        width: min(100%, 280px);
+        padding: 16px;
+        border: 1px solid rgba(31, 37, 41, 0.09);
+        border-radius: 18px;
+        background: rgba(247, 244, 238, 0.92);
+        backdrop-filter: blur(4px);
+      }
+
+      .overlay-card .meta {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .overlay-card h4 {
+        margin: 10px 0 8px;
+        font-size: 1.1rem;
+        line-height: 1.15;
+      }
+
+      .overlay-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        padding: 0 24px 24px;
+      }
+
+      .project-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .project-tag {
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-card h4 {
+        margin: 10px 0 10px;
+        font-size: 1.28rem;
+        line-height: 1.08;
+      }
+
+      .project-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.58;
+      }
+
+      .project-meta {
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(31, 37, 41, 0.08);
+        color: var(--brand);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .sample-roboto {
+        font-family: "Roboto", Arial, sans-serif;
+      }
+
+      .sample-public-sans {
+        font-family: "Public Sans", "Roboto", Arial, sans-serif;
+      }
+
+      .sample-manrope {
+        font-family: "Manrope", "Roboto", Arial, sans-serif;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .projects {
+          grid-template-columns: 1fr;
+        }
+
+        .proof-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 28px 14px 72px;
+        }
+
+        .sample {
+          padding: 18px;
+          border-radius: 22px;
+        }
+
+        .preview-nav,
+        .hero,
+        .projects {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .hero h3 {
+          font-size: 2.55rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <h1>Typography samples for Direction B</h1>
+        <p>
+          All three proposals use the same layout, spacing, and color direction so the only major
+          variable is the font family. The recommendation is to keep one sans-serif family across
+          the whole site in V1. Compare the hero headline, body copy, buttons, and project cards.
+        </p>
+      </section>
+
+      <section class="sample sample-roboto">
+        <div class="sample-header">
+          <div>
+            <span class="sample-kicker">Proposal 1</span>
+            <h2>Roboto</h2>
+            <p>
+              Best if you want the safest and most universal choice. It feels familiar, practical,
+              and readable on nearly every platform.
+            </p>
+          </div>
+          <div class="font-note">Recommended default for V1</div>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-nav">
+            <div class="wordmark">Stanley Lin</div>
+            <div class="nav-links">
+              <span>About</span>
+              <span>Projects</span>
+              <span>Contact</span>
+            </div>
+          </div>
+
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="eyebrow">Product strategy + engineering</div>
+              <h3>I build medical and software products with practical depth.</h3>
+              <p>
+                Product leader with engineering roots, focused on turning complex workflows into
+                useful systems. The tone here is clear, calm, and direct rather than decorative.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#">View Projects</a>
+                <a class="btn btn-secondary" href="#">Contact Stanley</a>
+              </div>
+              <div class="proof-grid">
+                <div class="proof">
+                  <strong>14 years</strong>
+                  <span>Across product management and product development</span>
+                </div>
+                <div class="proof">
+                  <strong>Medical + software</strong>
+                  <span>Built in regulated and cross-functional environments</span>
+                </div>
+                <div class="proof">
+                  <strong>0 to 1</strong>
+                  <span>From concept framing to shipped product systems</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="portrait"></div>
+              <div class="overlay-card">
+                <div class="meta">Profile focus</div>
+                <h4>Thoughtful operator with builder energy</h4>
+                <p>
+                  A clean, well-balanced font keeps the work itself in focus and supports a serious
+                  first impression.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="projects">
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDIRECO</h4>
+              <p>
+                Medical video integration and recording system designed for operating-room review,
+                teaching, and workflow capture.
+              </p>
+              <div class="project-meta">Role · Product lead</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDISTATION</h4>
+              <p>
+                Surgical case management platform for organizing, reviewing, and reusing recorded
+                cases across hospital teams.
+              </p>
+              <div class="project-meta">Role · Product director</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MOCAheart</h4>
+              <p>
+                Portable cardiovascular monitoring experience combining device-side sensing with a
+                mobile app workflow.
+              </p>
+              <div class="project-meta">Role · Product manager</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sample sample-public-sans">
+        <div class="sample-header">
+          <div>
+            <span class="sample-kicker">Proposal 2</span>
+            <h2>Public Sans</h2>
+            <p>
+              Best if you want a slightly sharper, more structured tone while still keeping the
+              site simple and friendly.
+            </p>
+          </div>
+          <div class="font-note">Best structured alternative</div>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-nav">
+            <div class="wordmark">Stanley Lin</div>
+            <div class="nav-links">
+              <span>About</span>
+              <span>Projects</span>
+              <span>Contact</span>
+            </div>
+          </div>
+
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="eyebrow">Product strategy + engineering</div>
+              <h3>I build medical and software products with practical depth.</h3>
+              <p>
+                Public Sans makes the layout feel a bit more intentional and institutional, which
+                can help the site read as disciplined without looking corporate.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#">View Projects</a>
+                <a class="btn btn-secondary" href="#">Contact Stanley</a>
+              </div>
+              <div class="proof-grid">
+                <div class="proof">
+                  <strong>14 years</strong>
+                  <span>Across product management and product development</span>
+                </div>
+                <div class="proof">
+                  <strong>Medical + software</strong>
+                  <span>Built in regulated and cross-functional environments</span>
+                </div>
+                <div class="proof">
+                  <strong>0 to 1</strong>
+                  <span>From concept framing to shipped product systems</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="portrait"></div>
+              <div class="overlay-card">
+                <div class="meta">Profile focus</div>
+                <h4>Thoughtful operator with builder energy</h4>
+                <p>
+                  This option gives the interface a slightly more designed and editorial structure
+                  while staying fully sans-serif.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="projects">
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDIRECO</h4>
+              <p>
+                Medical video integration and recording system designed for operating-room review,
+                teaching, and workflow capture.
+              </p>
+              <div class="project-meta">Role · Product lead</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDISTATION</h4>
+              <p>
+                Surgical case management platform for organizing, reviewing, and reusing recorded
+                cases across hospital teams.
+              </p>
+              <div class="project-meta">Role · Product director</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MOCAheart</h4>
+              <p>
+                Portable cardiovascular monitoring experience combining device-side sensing with a
+                mobile app workflow.
+              </p>
+              <div class="project-meta">Role · Product manager</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="sample sample-manrope">
+        <div class="sample-header">
+          <div>
+            <span class="sample-kicker">Proposal 3</span>
+            <h2>Manrope</h2>
+            <p>
+              Best if you want the warmest and most modern feel. It reads more personal and less
+              institutional than the other two.
+            </p>
+          </div>
+          <div class="font-note">Most personal-builder option</div>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-nav">
+            <div class="wordmark">Stanley Lin</div>
+            <div class="nav-links">
+              <span>About</span>
+              <span>Projects</span>
+              <span>Contact</span>
+            </div>
+          </div>
+
+          <div class="hero">
+            <div class="hero-copy">
+              <div class="eyebrow">Product strategy + engineering</div>
+              <h3>I build medical and software products with practical depth.</h3>
+              <p>
+                Manrope softens the page slightly and makes the tone more independent-builder,
+                while still staying clean and contemporary.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#">View Projects</a>
+                <a class="btn btn-secondary" href="#">Contact Stanley</a>
+              </div>
+              <div class="proof-grid">
+                <div class="proof">
+                  <strong>14 years</strong>
+                  <span>Across product management and product development</span>
+                </div>
+                <div class="proof">
+                  <strong>Medical + software</strong>
+                  <span>Built in regulated and cross-functional environments</span>
+                </div>
+                <div class="proof">
+                  <strong>0 to 1</strong>
+                  <span>From concept framing to shipped product systems</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="portrait"></div>
+              <div class="overlay-card">
+                <div class="meta">Profile focus</div>
+                <h4>Thoughtful operator with builder energy</h4>
+                <p>
+                  This option feels the most approachable, but it also reduces some of the
+                  structured authority that Roboto and Public Sans carry.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="projects">
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDIRECO</h4>
+              <p>
+                Medical video integration and recording system designed for operating-room review,
+                teaching, and workflow capture.
+              </p>
+              <div class="project-meta">Role · Product lead</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDISTATION</h4>
+              <p>
+                Surgical case management platform for organizing, reviewing, and reusing recorded
+                cases across hospital teams.
+              </p>
+              <div class="project-meta">Role · Product director</div>
+            </article>
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MOCAheart</h4>
+              <p>
+                Portable cardiovascular monitoring experience combining device-side sensing with a
+                mobile app workflow.
+              </p>
+              <div class="project-meta">Role · Product manager</div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

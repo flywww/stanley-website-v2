@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stanley Website V2 Proposal 2 Refined</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f3f7fa;
+        --bg-alt: #eef3f6;
+        --panel: rgba(250, 252, 253, 0.94);
+        --panel-strong: #fafcfd;
+        --text: #1c242b;
+        --muted: #5a6772;
+        --line: #d7e0e6;
+        --brand: #2f5d75;
+        --brand-strong: #24485b;
+        --accent: #b56a3e;
+        --shadow: 0 30px 80px rgba(36, 72, 91, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Public Sans", Arial, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(47, 93, 117, 0.08), transparent 32%),
+          radial-gradient(circle at 85% 12%, rgba(181, 106, 62, 0.06), transparent 20%),
+          linear-gradient(180deg, #f7fbfd 0%, #eff4f7 100%);
+      }
+
+      *::selection {
+        background: rgba(47, 93, 117, 0.18);
+      }
+
+      .page {
+        max-width: 1360px;
+        margin: 0 auto;
+        padding: 56px 24px 128px;
+      }
+
+      .top-note {
+        max-width: 860px;
+        margin-bottom: 36px;
+      }
+
+      .top-note .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .top-note h1 {
+        margin: 0 0 16px;
+        font-size: clamp(2.25rem, 4vw, 4.2rem);
+        line-height: 0.98;
+        letter-spacing: -0.028em;
+      }
+
+      .top-note p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.04rem;
+        line-height: 1.72;
+      }
+
+      .site-frame {
+        overflow: hidden;
+        border: 1px solid rgba(36, 72, 91, 0.1);
+        border-radius: 32px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 28px 32px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.44);
+      }
+
+      .wordmark {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+        gap: 40px;
+        padding: 40px 32px 28px;
+      }
+
+      .hero-copy {
+        padding: 18px 6px 10px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid rgba(47, 93, 117, 0.12);
+        border-radius: 999px;
+        background: rgba(47, 93, 117, 0.08);
+        color: var(--brand);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero h2 {
+        max-width: 12ch;
+        margin: 22px 0 18px;
+        font-size: clamp(2.9rem, 5vw, 5.35rem);
+        line-height: 0.97;
+        letter-spacing: -0.032em;
+        font-weight: 800;
+      }
+
+      .hero p {
+        max-width: 62ch;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.06rem;
+        line-height: 1.78;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 15px;
+        border: 1px solid transparent;
+        font-size: 0.96rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: var(--brand);
+        color: #f8fbfc;
+      }
+
+      .btn-secondary {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--text);
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 36px;
+      }
+
+      .proof {
+        min-height: 132px;
+        padding: 22px 20px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.46);
+      }
+
+      .proof strong {
+        display: block;
+        font-size: 1.28rem;
+        line-height: 1.08;
+      }
+
+      .proof span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.6;
+      }
+
+      .hero-panel {
+        position: relative;
+        padding: 24px;
+        border: 1px solid rgba(47, 93, 117, 0.14);
+        border-radius: 28px;
+        background:
+          linear-gradient(160deg, rgba(47, 93, 117, 0.09), rgba(255, 255, 255, 0.44)),
+          linear-gradient(180deg, #f4f8fb 0%, #edf3f6 100%);
+      }
+
+      .portrait {
+        min-height: 420px;
+        border: 1px solid rgba(47, 93, 117, 0.1);
+        border-radius: 24px;
+        background:
+          linear-gradient(140deg, rgba(47, 93, 117, 0.08), transparent 34%),
+          radial-gradient(circle at 75% 20%, rgba(181, 106, 62, 0.11), transparent 24%),
+          repeating-linear-gradient(
+            90deg,
+            rgba(47, 93, 117, 0.06),
+            rgba(47, 93, 117, 0.06) 1px,
+            transparent 1px,
+            transparent 26px
+          ),
+          linear-gradient(180deg, #dde6eb 0%, #d2dbe1 100%);
+      }
+
+      .overlay-card {
+        position: absolute;
+        right: 24px;
+        bottom: 24px;
+        width: min(100%, 300px);
+        padding: 20px;
+        border: 1px solid rgba(36, 72, 91, 0.1);
+        border-radius: 20px;
+        background: rgba(250, 252, 253, 0.92);
+        box-shadow: 0 12px 32px rgba(36, 72, 91, 0.08);
+      }
+
+      .overlay-card .meta {
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .overlay-card h3 {
+        margin: 12px 0 10px;
+        font-size: 1.14rem;
+        line-height: 1.22;
+        letter-spacing: -0.02em;
+      }
+
+      .overlay-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.62;
+      }
+
+      .section-divider {
+        height: 1px;
+        margin: 8px 32px 0;
+        background: linear-gradient(
+          90deg,
+          rgba(215, 224, 230, 0) 0%,
+          rgba(215, 224, 230, 1) 18%,
+          rgba(215, 224, 230, 1) 82%,
+          rgba(215, 224, 230, 0) 100%
+        );
+      }
+
+      .projects {
+        padding: 36px 32px 40px;
+      }
+
+      .section-head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 24px;
+      }
+
+      .section-head h3 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+      }
+
+      .section-head p {
+        max-width: 58ch;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .section-meta {
+        color: var(--brand);
+        font-size: 0.86rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .project-card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.52);
+      }
+
+      .project-tag {
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .project-card h4 {
+        margin: 14px 0 14px;
+        font-size: 1.34rem;
+        line-height: 1.14;
+        letter-spacing: -0.02em;
+      }
+
+      .project-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.96rem;
+        line-height: 1.7;
+      }
+
+      .project-meta {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(36, 72, 91, 0.08);
+        color: var(--brand);
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 1080px) {
+        .hero,
+        .project-grid,
+        .proof-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          gap: 28px;
+        }
+
+        .proof {
+          min-height: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 28px 14px 88px;
+        }
+
+        .nav,
+        .hero,
+        .projects {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .nav {
+          padding-top: 22px;
+          padding-bottom: 22px;
+        }
+
+        .hero {
+          padding-top: 28px;
+        }
+
+        .hero-panel {
+          padding: 16px;
+        }
+
+        .portrait {
+          min-height: 320px;
+        }
+
+        .overlay-card {
+          position: static;
+          width: 100%;
+          margin-top: 16px;
+        }
+
+        .top-note h1,
+        .hero h2 {
+          letter-spacing: -0.022em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="top-note">
+        <div class="eyebrow">Proposal 2 refined</div>
+        <h1>Cleaner, cooler, and more open</h1>
+        <p>
+          This revision keeps `Public Sans` as the single typeface, replaces the warm beige
+          background with a cleaner cool-neutral surface, loosens the headline tracking, and adds
+          more breathing room across the hero, metrics, and project cards.
+        </p>
+      </section>
+
+      <section class="site-frame">
+        <header class="nav">
+          <div class="wordmark">Stanley Lin</div>
+          <div class="nav-links">
+            <span>About</span>
+            <span>Projects</span>
+            <span>Experience</span>
+            <span>Contact</span>
+          </div>
+        </header>
+
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="pill">Product strategy + engineering systems</div>
+            <h2>I build medical and software products with practical depth.</h2>
+            <p>
+              Product leader with engineering roots, focused on turning complex workflows into
+              usable systems. The visual tone is clean and structured, with enough warmth to feel
+              personal but not casual.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#">View Projects</a>
+              <a class="btn btn-secondary" href="#">Contact Stanley</a>
+            </div>
+
+            <div class="proof-grid">
+              <div class="proof">
+                <strong>14 years</strong>
+                <span>Across product management and product development in software and medical domains.</span>
+              </div>
+              <div class="proof">
+                <strong>Medical + software</strong>
+                <span>Comfortable working across clinical workflows, technical constraints, and cross-functional teams.</span>
+              </div>
+              <div class="proof">
+                <strong>0 to 1 product work</strong>
+                <span>From opportunity framing and product definition to shipped systems and iterative refinement.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="portrait"></div>
+            <div class="overlay-card">
+              <div class="meta">Positioning</div>
+              <h3>Thoughtful operator with builder energy</h3>
+              <p>
+                The right-side visual stays quiet and structured so the typography and credibility
+                signals remain the center of attention.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section class="projects">
+          <div class="section-head">
+            <div>
+              <div class="section-meta">Selected work</div>
+              <h3>Product systems with real operating context</h3>
+              <p>
+                Project cards are more spacious here on purpose. They should feel like composed
+                summaries, not compressed tiles.
+              </p>
+            </div>
+            <div class="section-meta">Clean structure, low noise</div>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDIRECO</h4>
+              <p>
+                Medical video integration and recording system for operating rooms, designed to
+                support review, teaching, and clinical workflow capture without adding interface
+                noise.
+              </p>
+              <div class="project-meta">Role · Product lead</div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MEDISTATION</h4>
+              <p>
+                Surgical case management platform that helps hospitals organize, review, and reuse
+                recorded cases across education, collaboration, and service delivery contexts.
+              </p>
+              <div class="project-meta">Role · Product director</div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-tag">Featured product</div>
+              <h4>MOCAheart</h4>
+              <p>
+                Portable cardiovascular monitoring experience that combines device-side sensing with
+                a mobile workflow for tracking ECG and blood pressure related information.
+              </p>
+              <div class="project-meta">Role · Product manager</div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

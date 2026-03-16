@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+html,
+:root {
+  --background: #f2f2f2;
+  --foreground: #182229;
+  --surface: #ffffff;
+  --surface-strong: #f7f7f7;
+  --muted: #5b6770;
+  --accent: #004a7c;
+  --accent-soft: #005691;
+  --line: #cdcdcd;
+  color-scheme: light;
+}
+
+html[data-theme="light"] {
+  --background: #f2f2f2;
+  --foreground: #182229;
+  --surface: #ffffff;
+  --surface-strong: #f7f7f7;
+  --muted: #5b6770;
+  --accent: #004a7c;
+  --accent-soft: #005691;
+  --line: #cdcdcd;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --background: #11161b;
+  --foreground: #eef3f6;
+  --surface: #182028;
+  --surface-strong: #1d2630;
+  --muted: #aab8c2;
+  --accent: #6aaad6;
+  --accent-soft: #4b8fc1;
+  --line: #2a3742;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --font-sans: var(--font-public-sans);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-public-sans), Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes gallery-fade {
+  from {
+    opacity: 0.72;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-gallery-fade {
+  animation: gallery-fade 320ms ease;
+}

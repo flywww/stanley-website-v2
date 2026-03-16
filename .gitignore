@@ -1,0 +1,10 @@
+.DS_Store
+
+# Website build artifacts and dependencies
+stanley-website-v2/node_modules/
+stanley-website-v2/.next/
+stanley-website-v2/.vercel/
+stanley-website-v2/*.tsbuildinfo
+
+# Optional local env files
+stanley-website-v2/.env*
