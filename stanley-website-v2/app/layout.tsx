@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Public_Sans } from "next/font/google";
 
+import { getRobotsDirectives, isProductionDeployment, siteBaseUrl } from "@/lib/seo";
+import { siteMeta } from "@/lib/site-data";
 import "./globals.css";
 
 const publicSans = Public_Sans({
@@ -10,9 +13,32 @@ const publicSans = Public_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Stanley Lin",
-  description: "Product team lead building medical and software products.",
+  metadataBase: siteBaseUrl,
+  title: {
+    default: siteMeta.name,
+    template: `%s | ${siteMeta.name}`,
+  },
+  description: siteMeta.intro,
+  alternates: {
+    canonical: "/",
+  },
   manifest: "/site.webmanifest",
+  openGraph: {
+    type: "website",
+    url: siteMeta.siteUrl,
+    title: siteMeta.name,
+    description: siteMeta.intro,
+    siteName: siteMeta.name,
+    images: [siteMeta.defaultOgImage],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteMeta.name,
+    description: siteMeta.intro,
+    images: [siteMeta.defaultOgImage],
+  },
+  robots: getRobotsDirectives(),
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -46,6 +72,7 @@ export default function RootLayout({
             `,
           }}
         />
+        {isProductionDeployment ? <GoogleAnalytics gaId="G-304QB36Y7B" /> : null}
         {children}
       </body>
     </html>

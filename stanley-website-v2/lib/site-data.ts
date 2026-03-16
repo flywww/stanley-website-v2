@@ -40,12 +40,15 @@ export type Project = {
 export const siteMeta = {
   name: "Stanley Lin",
   title: "Product team lead",
+  siteUrl: "https://stanley004.com",
   avatar: "/images/profile/stanley-lin.jpeg",
+  defaultOgImage: "/images/projects/medistation/platform.jpg",
   eyebrow: "Product team lead",
   headline: "I build thoughtful products with product strategy and engineering depth.",
   intro:
     "Product leader with design and engineering depth, building practical products across medical and software environments from strategy to delivery.",
   email: "flywww004@gmail.com",
+  location: "New Taipei City, Taiwan",
   linkedin: "https://www.linkedin.com/in/stanley004/",
   github: "https://github.com/flywww",
   x: "https://x.com/flywww004s",

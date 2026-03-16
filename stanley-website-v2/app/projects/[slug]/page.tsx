@@ -1,12 +1,43 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageShell } from "@/components/page-shell";
 import { ProjectGallery } from "@/components/project-gallery";
+import { createProjectJsonLd, createProjectMetadata } from "@/lib/seo";
 import { getProduct, getRelatedProjects, products } from "@/lib/site-data";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProduct(slug);
+
+  if (!project) {
+    return createProjectMetadata({
+      slug,
+      name: "Project",
+      featured: false,
+      gridImage: "/images/projects/medistation/platform.jpg",
+      gallery: [],
+      brief: "Selected product work.",
+      roleTags: [],
+      contributionTags: [],
+      problem: [],
+      solution: [],
+      outcome: [],
+      capabilities: [],
+      related: [],
+    });
+  }
+
+  return createProjectMetadata(project);
 }
 
 export default async function ProjectDetailPage({
@@ -23,9 +54,16 @@ export default async function ProjectDetailPage({
 
   const mergedTags = Array.from(new Set([...product.roleTags, ...product.capabilities]));
   const relatedProjects = getRelatedProjects(product.related);
+  const projectJsonLd = createProjectJsonLd(product);
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectJsonLd),
+        }}
+      />
       <div className="space-y-10">
         <div className="space-y-5">
           <div className="max-w-4xl">

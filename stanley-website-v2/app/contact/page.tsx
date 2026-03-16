@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 import { PageShell } from "@/components/page-shell";
+import { createPageMetadata } from "@/lib/seo";
 import { contactPage, siteMeta } from "@/lib/site-data";
+
+export const metadata: Metadata = createPageMetadata({
+  path: "/contact",
+  title: contactPage.title,
+  description: contactPage.intro,
+  images: [siteMeta.defaultOgImage],
+});
 
 const contactItems = [
   { label: "Email", value: siteMeta.email, href: `mailto:${siteMeta.email}`, icon: Mail },

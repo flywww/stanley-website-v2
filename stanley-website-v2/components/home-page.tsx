@@ -4,6 +4,7 @@ import { Briefcase, Layers3, MonitorSmartphone, Server } from "lucide-react";
 
 import { CountUpValue } from "@/components/count-up-value";
 import { PageShell } from "@/components/page-shell";
+import { createHomeJsonLd } from "@/lib/seo";
 import { experienceHighlights, keySkills, metrics, products, siteMeta } from "@/lib/site-data";
 
 const featuredProducts = products.filter((product) => product.featured);
@@ -90,8 +91,16 @@ function SkillsSection() {
 }
 
 export function HomePage() {
+  const homeJsonLd = createHomeJsonLd();
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homeJsonLd),
+        }}
+      />
       <HeroSection />
 
       <MetricsSection />

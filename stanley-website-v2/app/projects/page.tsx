@@ -1,12 +1,29 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import { PageShell } from "@/components/page-shell";
+import { createPageMetadata, createProjectsJsonLd } from "@/lib/seo";
 import { products, projectsPage } from "@/lib/site-data";
 
+export const metadata: Metadata = createPageMetadata({
+  path: "/projects",
+  title: "Projects",
+  description: "Selected product work across medical and software products.",
+  images: ["/images/projects/medistation/platform.jpg"],
+});
+
 export default function ProjectsPage() {
+  const projectsJsonLd = createProjectsJsonLd(products);
+
   return (
     <PageShell title={projectsPage.title}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(projectsJsonLd),
+        }}
+      />
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {products.map((product) => (
           <Link
