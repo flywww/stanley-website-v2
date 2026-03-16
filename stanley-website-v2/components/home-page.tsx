@@ -22,6 +22,10 @@ function HeroSection() {
         <div className="relative aspect-[0.88] overflow-hidden rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface-strong)]">
           <Image src={siteMeta.avatar} alt={siteMeta.name} fill className="object-cover object-center" priority />
         </div>
+        <div className="mt-4 space-y-1">
+          <p className="text-xl font-semibold leading-tight">{siteMeta.name}</p>
+          <p className="text-[0.95rem] leading-6 text-[color:var(--muted)]">林盈志</p>
+        </div>
       </div>
       <div className="max-w-[740px]">
         <h1 className="text-[clamp(3rem,6vw,5.2rem)] font-bold leading-[0.99]">{siteMeta.headline}</h1>
