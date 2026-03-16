@@ -233,9 +233,9 @@ Approved starter icons:
 - generic startup visuals
 
 ## Current approved sample
-- [Stanley website v2 - proposal 2 simple](Stanley%20website%20v2%20-%20proposal%202%20simple.html)
-- Alternative sample: [Stanley website v2 - proposal 2 refined](Stanley%20website%20v2%20-%20proposal%202%20refined.html)
-- Typography comparison: [Stanley website v2 - typography samples](Stanley%20website%20v2%20-%20typography%20samples.html)
+- [Stanley website v2 - proposal 2 simple](site-assets/design-proposals/Stanley%20website%20v2%20-%20proposal%202%20simple.html)
+- Alternative sample: [Stanley website v2 - proposal 2 refined](site-assets/design-proposals/Stanley%20website%20v2%20-%20proposal%202%20refined.html)
+- Typography comparison: [Stanley website v2 - typography samples](site-assets/design-proposals/Stanley%20website%20v2%20-%20typography%20samples.html)
 
 ## Personal website UI examples
 [Personal website example 1](../../06%20Resources/99%20Attachment/Pasted%20image%2020260314152914.jpg)

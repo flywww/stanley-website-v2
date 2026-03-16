@@ -27,15 +27,17 @@ flowchart TD
 - [[06 Product test]]
 - [[07 Deploy and Operation]]
 
-## Local asset folders
-- [Porfolio image](Porfolio%20image)
-- [20231221 Portfolio](20231221%20Portfolio)
-- [site-assets-source](site-assets-source)
+## Site assets
+- [site-assets](site-assets)
+- [portfolio-images](site-assets/portfolio-images)
+- [20231221-portfolio](site-assets/20231221-portfolio)
+- [generated-assets](site-assets/generated-assets)
+- [favicon](site-assets/favicon)
 
 ## HTML samples
-- [Stanley website v2 - proposal 2 simple](Stanley%20website%20v2%20-%20proposal%202%20simple.html)
-- [Stanley website v2 - proposal 2 refined](Stanley%20website%20v2%20-%20proposal%202%20refined.html)
-- [Stanley website v2 - typography samples](Stanley%20website%20v2%20-%20typography%20samples.html)
+- [Stanley website v2 - proposal 2 simple](site-assets/design-proposals/Stanley%20website%20v2%20-%20proposal%202%20simple.html)
+- [Stanley website v2 - proposal 2 refined](site-assets/design-proposals/Stanley%20website%20v2%20-%20proposal%202%20refined.html)
+- [Stanley website v2 - typography samples](site-assets/design-proposals/Stanley%20website%20v2%20-%20typography%20samples.html)
 
 ## Core external references
 - Website V1: https://stanley004.com/

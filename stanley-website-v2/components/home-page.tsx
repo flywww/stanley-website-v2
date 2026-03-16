@@ -6,9 +6,6 @@ import { CountUpValue } from "@/components/count-up-value";
 import { PageShell } from "@/components/page-shell";
 import { experienceHighlights, keySkills, metrics, products, siteMeta } from "@/lib/site-data";
 
-type LayoutVariant = "a";
-type MetricsVariant = "a" | "b" | "c";
-
 const featuredProducts = products.filter((product) => product.featured);
 const skillIcons = {
   "Front-end development": MonitorSmartphone,
@@ -17,7 +14,7 @@ const skillIcons = {
   "Product planning": Briefcase,
 } as const;
 
-function HeroSection({}: { variant: LayoutVariant }) {
+function HeroSection() {
   return (
     <section className="grid gap-10 pb-16 pt-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start lg:gap-18 lg:pb-20 lg:pt-10">
       <div className="w-full max-w-[220px]">
@@ -41,59 +38,23 @@ function HeroSection({}: { variant: LayoutVariant }) {
   );
 }
 
-function MetricsSection({ variant }: { variant: MetricsVariant }) {
-  if (variant === "b") {
-    return (
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] mb-28 w-screen">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-          <div className="grid gap-0 md:grid-cols-3">
-            {metrics.map((metric, index) => (
-              <div
-                key={metric.label}
-                className={`px-4 py-6 text-center md:px-8 md:py-8 ${
-                  index === 0 ? "" : "border-t border-[color:var(--line)] md:border-l md:border-t-0"
-                }`}
-              >
-                <p className="text-[2.6rem] font-bold leading-none text-[color:var(--accent)]">
-                  <CountUpValue value={metric.value} />
-                </p>
-                <div className="mx-auto mt-4 h-px w-full max-w-[220px] bg-[color:var(--line)]" />
-                <p className="mt-4 text-[0.92rem] leading-7 text-[color:var(--muted)]">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (variant === "c") {
-    return (
-      <section className="relative left-1/2 right-1/2 -mx-[50vw] mb-28 w-screen bg-[color:var(--surface-strong)] py-12 md:py-16">
-        <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-          <div className="grid gap-5 md:grid-cols-3">
-            {metrics.map((metric) => (
-              <div key={metric.label} className="rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface)] px-7 py-6">
-                <p className="text-[2.2rem] font-bold leading-none text-[color:var(--accent)]">{metric.value}</p>
-                <div className="mt-5 h-px w-full bg-[color:var(--line)]" />
-                <p className="mt-4 text-[0.95rem] leading-7 text-[color:var(--muted)]">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
+function MetricsSection() {
   return (
-    <section className="relative left-1/2 right-1/2 -mx-[50vw] mb-28 w-screen border-y border-[color:var(--line)] bg-[color:var(--surface)] py-12 md:py-16">
+    <section className="relative left-1/2 right-1/2 -mx-[50vw] mb-28 w-screen">
       <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-        <div className="grid gap-8 md:grid-cols-3 md:gap-10">
-          {metrics.map((metric) => (
-            <div key={metric.label} className="px-1">
-              <p className="text-[2.2rem] font-bold leading-none">{metric.value}</p>
-              <div className="mt-4 h-px w-full bg-[color:var(--line)]" />
-              <p className="mt-4 text-[0.95rem] leading-7 text-[color:var(--muted)]">{metric.label}</p>
+        <div className="grid gap-0 md:grid-cols-3">
+          {metrics.map((metric, index) => (
+            <div
+              key={metric.label}
+              className={`px-4 py-6 text-center md:px-8 md:py-8 ${
+                index === 0 ? "" : "border-t border-[color:var(--line)] md:border-l md:border-t-0"
+              }`}
+            >
+              <p className="text-[2.6rem] font-bold leading-none text-[color:var(--accent)]">
+                <CountUpValue value={metric.value} />
+              </p>
+              <div className="mx-auto mt-4 h-px w-full max-w-[220px] bg-[color:var(--line)]" />
+              <p className="mt-4 text-[0.92rem] leading-7 text-[color:var(--muted)]">{metric.label}</p>
             </div>
           ))}
         </div>
@@ -102,7 +63,7 @@ function MetricsSection({ variant }: { variant: MetricsVariant }) {
   );
 }
 
-function SkillsSection({}: { variant: LayoutVariant }) {
+function SkillsSection() {
   return (
     <section className="pb-28">
       <div className="mb-10">
@@ -128,20 +89,14 @@ function SkillsSection({}: { variant: LayoutVariant }) {
   );
 }
 
-export function HomePage({
-  variant,
-  metricsVariant,
-}: {
-  variant: LayoutVariant;
-  metricsVariant: MetricsVariant;
-}) {
+export function HomePage() {
   return (
     <PageShell>
-      <HeroSection variant={variant} />
+      <HeroSection />
 
-      <MetricsSection variant={metricsVariant} />
+      <MetricsSection />
 
-      <SkillsSection variant={variant} />
+      <SkillsSection />
 
       <section id="experience" className="pb-28">
         <div className="mx-auto max-w-5xl">

@@ -24,7 +24,6 @@ pnpm start
 - `/`
 - `/projects`
 - `/projects/[slug]`
-- `/about`
 - `/contact`
 
 ## Content Source
@@ -39,21 +38,13 @@ Planning notes and source material live in the Obsidian vault under:
 
 Product and company visuals in this repo are copied from the approved source folder in the vault:
 
-- `Porfolio image/`
+- `site-assets/portfolio-images/`
 
-Do not pull website images from `20231221 Porfolio` exports for UI use. That package is for text/content reference only.
+Do not pull website images from `site-assets/20231221-portfolio/` exports for UI use. That package is for text/content reference only.
 
 ## Current Scope
 
-- Homepage with hero, featured products, key skills, experience, about, and contact
+- Homepage with hero, featured products, key skills, and experience
 - Projects index with all products
-- Basic project detail pages
-- About page
+- Product detail pages with image galleries
 - Contact page
-
-## Next Build Steps
-
-1. Refine typography and spacing.
-2. Add manual light/dark theme toggle if desired.
-3. Add richer project detail content and more gallery images.
-4. Prepare Vercel deployment.

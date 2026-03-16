@@ -720,7 +720,7 @@ flowchart TD
 - LinkedIn profile PDF: [LinkedIn profile](../../06%20Resources/99%20Attachment/LinkedIn%20profile.pdf)
 - CakeResume PDF: [CakeResume](../../06%20Resources/99%20Attachment/CakeResume.pdf)
 - Avatar: [Avatar](../../06%20Resources/99%20Attachment/905387_635171219831242_217474755_o.jpeg)
-- Explicit product image folder: [Porfolio image](Porfolio%20image)
+- Explicit product image folder: [portfolio-images](site-assets/portfolio-images)
 - Website V1: https://stanley004.com/
 - Company website: https://www.twinbeans.com.tw/
 
@@ -738,30 +738,30 @@ flowchart TD
 ## Asset sources
 
 ### Featured product images
-- `MEDIRECO`: [MEDIRECO.png](Porfolio%20image/TwinBeans/MEDIRECO/MEDIRECO.png)
-- `MEDISTATION`: [MEDISTATION plateform.jpg](Porfolio%20image/TwinBeans/MEDISTATION/MEDISTATION%20plateform.jpg)
-- `MEDIMEET`: [MEDIMEET.png](Porfolio%20image/TwinBeans/MEDIMEET/MEDIMEET.png)
-- `MOCAheart`: [cover.webp](Porfolio%20image/MOCACare/cover.webp)
+- `MEDIRECO`: [MEDIRECO.png](site-assets/portfolio-images/TwinBeans/MEDIRECO/MEDIRECO.png)
+- `MEDISTATION`: [MEDISTATION plateform.jpg](site-assets/portfolio-images/TwinBeans/MEDISTATION/MEDISTATION%20plateform.jpg)
+- `MEDIMEET`: [MEDIMEET.png](site-assets/portfolio-images/TwinBeans/MEDIMEET/MEDIMEET.png)
+- `MOCAheart`: [cover.webp](site-assets/portfolio-images/MOCACare/cover.webp)
 
 ### Projects page and detail visuals
-- `JDM`: [Screenshot 2024-01-18 at 4.44.35 PM.png](Porfolio%20image/JDM/Screenshot%202024-01-18%20at%204.44.35%20PM.png)
-- `eKARDIA`: [eKRDIA.png](Porfolio%20image/eKRDIA/eKRDIA.png)
-- `CaloShop`: [CaloShop-1.png](Porfolio%20image/CaloShop/CaloShop-1.png)
-- `MOCACare medical version`: [Screenshot 2024-01-18 at 4.44.26 PM.png](Porfolio%20image/MOCACare%20medical/Screenshot%202024-01-18%20at%204.44.26%20PM.png)
-- `MEDIRECO hardware`: [MEDIRECO hardware.png](Porfolio%20image/TwinBeans/MEDIRECO/MEDIRECO%20hardware.png)
-- `MEDISTATION data analysis`: [Data analysis.png](Porfolio%20image/TwinBeans/MEDISTATION/Data%20analysis.png)
-- `MEDISTATION iPad UI`: [MS UI iPad.png](Porfolio%20image/TwinBeans/MEDISTATION/MS%20UI%20iPad.png)
-- `MEDIMEET tablet`: [MEDIMEET on tablet.jpg](Porfolio%20image/TwinBeans/MEDIMEET/MEDIMEET%20on%20tablet.jpg)
-- `CaloShop workout video still`: [CaloShop workout video.jpg](Porfolio%20image/CaloShop/CaloShop%20workout%20video.jpg)
+- `JDM`: [Screenshot 2024-01-18 at 4.44.35 PM.png](site-assets/portfolio-images/JDM/Screenshot%202024-01-18%20at%204.44.35%20PM.png)
+- `eKARDIA`: [eKRDIA.png](site-assets/portfolio-images/eKRDIA/eKRDIA.png)
+- `CaloShop`: [CaloShop-1.png](site-assets/portfolio-images/CaloShop/CaloShop-1.png)
+- `MOCACare medical version`: [Screenshot 2024-01-18 at 4.44.26 PM.png](site-assets/portfolio-images/MOCACare%20medical/Screenshot%202024-01-18%20at%204.44.26%20PM.png)
+- `MEDIRECO hardware`: [MEDIRECO hardware.png](site-assets/portfolio-images/TwinBeans/MEDIRECO/MEDIRECO%20hardware.png)
+- `MEDISTATION data analysis`: [Data analysis.png](site-assets/portfolio-images/TwinBeans/MEDISTATION/Data%20analysis.png)
+- `MEDISTATION iPad UI`: [MS UI iPad.png](site-assets/portfolio-images/TwinBeans/MEDISTATION/MS%20UI%20iPad.png)
+- `MEDIMEET tablet`: [MEDIMEET on tablet.jpg](site-assets/portfolio-images/TwinBeans/MEDIMEET/MEDIMEET%20on%20tablet.jpg)
+- `CaloShop workout video still`: [CaloShop workout video.jpg](site-assets/portfolio-images/CaloShop/CaloShop%20workout%20video.jpg)
 
 ### Supporting assets
 - Avatar: [Avatar](../../06%20Resources/99%20Attachment/905387_635171219831242_217474755_o.jpeg)
-- Twin Beans context: [Screenshot 2024-01-19 at 4.59.22 PM.png](Porfolio%20image/TwinBeans/TB%20website/Screenshot%202024-01-19%20at%204.59.22%20PM.png)
+- Twin Beans context: [Screenshot 2024-01-19 at 4.59.22 PM.png](site-assets/portfolio-images/TwinBeans/TB%20website/Screenshot%202024-01-19%20at%204.59.22%20PM.png)
 
 ### Asset rules
-- Use explicit files from `Porfolio image/`
-- Do not use exported images from `20231221 Porfolio` for the website UI
-- `20231221 Porfolio` is valid as text/content reference only
+- Use explicit files from `site-assets/portfolio-images/`
+- Do not use exported images from `site-assets/20231221-portfolio/` for the website UI
+- `site-assets/20231221-portfolio/` is valid as text/content reference only
 - Internet images are optional, not required
 
 ## Missing items before launch

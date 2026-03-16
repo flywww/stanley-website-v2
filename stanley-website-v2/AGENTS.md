@@ -21,8 +21,8 @@
 - Treat `lib/site-data.ts` as the current structured content source.
 - Source-of-truth planning and raw materials live in the Obsidian vault under:
   - `/Users/stanley/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOSVault/01 Inbox/20260313 Stanley Website`
-- Use product images only from the approved `Porfolio image/` folder in the vault.
-- Do not use exported images from `20231221 Porfolio` for website UI. That package is text/reference only.
+- Use product images only from the approved `site-assets/portfolio-images/` folder in the vault.
+- Do not use exported images from `site-assets/20231221-portfolio/` for website UI. That package is text/reference only.
 
 ## Design Rules
 - The site should feel like a personal builder, but remain credible for employers in medical and software industries.
