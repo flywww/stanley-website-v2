@@ -1,26 +1,27 @@
 import type { MetadataRoute } from "next";
 
+import { getProjects, getSiteSettings } from "@/lib/cms/queries";
 import { absoluteUrl } from "@/lib/seo";
-import { products } from "@/lib/site-data";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [settings, products] = await Promise.all([getSiteSettings(), getProjects()]);
   const lastModified = new Date();
 
   return [
     {
-      url: absoluteUrl("/"),
+      url: absoluteUrl(settings.siteUrl, "/"),
       lastModified,
     },
     {
-      url: absoluteUrl("/projects"),
+      url: absoluteUrl(settings.siteUrl, "/projects"),
       lastModified,
     },
     {
-      url: absoluteUrl("/contact"),
+      url: absoluteUrl(settings.siteUrl, "/contact"),
       lastModified,
     },
     ...products.map((product) => ({
-      url: absoluteUrl(`/projects/${product.slug}`),
+      url: absoluteUrl(settings.siteUrl, `/projects/${product.slug}`),
       lastModified,
     })),
   ];

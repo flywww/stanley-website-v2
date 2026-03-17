@@ -4,12 +4,9 @@ import { notFound } from "next/navigation";
 
 import { PageShell } from "@/components/page-shell";
 import { ProjectGallery } from "@/components/project-gallery";
+import { getProjectBySlug, getRelatedProjects, getSiteSettings } from "@/lib/cms/queries";
 import { createProjectJsonLd, createProjectMetadata } from "@/lib/seo";
-import { getProduct, getRelatedProjects, products } from "@/lib/site-data";
-
-export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -17,10 +14,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProduct(slug);
+  const [project, settings] = await Promise.all([getProjectBySlug(slug), getSiteSettings()]);
 
   if (!project) {
-    return createProjectMetadata({
+    return createProjectMetadata(settings, {
       slug,
       name: "Project",
       featured: false,
@@ -37,7 +34,7 @@ export async function generateMetadata({
     });
   }
 
-  return createProjectMetadata(project);
+  return createProjectMetadata(settings, project);
 }
 
 export default async function ProjectDetailPage({
@@ -46,15 +43,15 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const [product, settings] = await Promise.all([getProjectBySlug(slug), getSiteSettings()]);
 
   if (!product) {
     notFound();
   }
 
   const mergedTags = Array.from(new Set([...product.roleTags, ...product.capabilities]));
-  const relatedProjects = getRelatedProjects(product.related);
-  const projectJsonLd = createProjectJsonLd(product);
+  const relatedProjects = await getRelatedProjects(product.related);
+  const projectJsonLd = createProjectJsonLd(settings, product);
 
   return (
     <PageShell>

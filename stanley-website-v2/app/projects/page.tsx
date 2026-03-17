@@ -3,21 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { PageShell } from "@/components/page-shell";
+import { getPublicProjects, getSiteSettings } from "@/lib/cms/queries";
 import { createPageMetadata, createProjectsJsonLd } from "@/lib/seo";
-import { products, projectsPage } from "@/lib/site-data";
+export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = createPageMetadata({
-  path: "/projects",
-  title: "Projects",
-  description: "Selected product work across medical and software products.",
-  images: ["/images/projects/medistation/platform.jpg"],
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
 
-export default function ProjectsPage() {
-  const projectsJsonLd = createProjectsJsonLd(products);
+  return createPageMetadata({
+    site: settings,
+    path: "/projects",
+    title: settings.projectsPageTitle,
+    description: "Selected product work across medical and software products.",
+    images: [settings.defaultOgImageUrl],
+  });
+}
+
+export default async function ProjectsPage() {
+  const [products, settings] = await Promise.all([getPublicProjects(), getSiteSettings()]);
+  const projectsJsonLd = createProjectsJsonLd(settings, products);
 
   return (
-    <PageShell title={projectsPage.title}>
+    <PageShell title={settings.projectsPageTitle}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -2,26 +2,34 @@ import type { Metadata } from "next";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 import { PageShell } from "@/components/page-shell";
+import { getSiteSettings } from "@/lib/cms/queries";
 import { createPageMetadata } from "@/lib/seo";
-import { contactPage, siteMeta } from "@/lib/site-data";
 
-export const metadata: Metadata = createPageMetadata({
-  path: "/contact",
-  title: contactPage.title,
-  description: contactPage.intro,
-  images: [siteMeta.defaultOgImage],
-});
+export const dynamic = "force-dynamic";
 
-const contactItems = [
-  { label: "Email", value: siteMeta.email, href: `mailto:${siteMeta.email}`, icon: Mail },
-  { label: "LinkedIn", value: siteMeta.linkedin, href: siteMeta.linkedin, icon: Linkedin },
-  { label: "GitHub", value: siteMeta.github, href: siteMeta.github, icon: Github },
-  { label: "X", value: siteMeta.x, href: siteMeta.x, icon: Twitter },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
 
-export default function ContactPage() {
+  return createPageMetadata({
+    site: settings,
+    path: "/contact",
+    title: settings.contactPageTitle,
+    description: settings.contactPageIntro,
+    images: [settings.defaultOgImageUrl],
+  });
+}
+
+export default async function ContactPage() {
+  const settings = await getSiteSettings();
+  const contactItems = [
+    { label: "Email", value: settings.email, href: `mailto:${settings.email}`, icon: Mail },
+    { label: "LinkedIn", value: settings.linkedin, href: settings.linkedin, icon: Linkedin },
+    { label: "GitHub", value: settings.github, href: settings.github, icon: Github },
+    { label: "X", value: settings.x, href: settings.x, icon: Twitter },
+  ];
+
   return (
-    <PageShell title={contactPage.title} intro={contactPage.intro}>
+    <PageShell title={settings.contactPageTitle} intro={settings.contactPageIntro}>
       <div className="grid gap-4 md:grid-cols-2">
         {contactItems.map((item) => {
           const Icon = item.icon;

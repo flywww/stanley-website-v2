@@ -1,10 +1,12 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import type { CmsSiteSettings } from "@/lib/cms/types";
 
-import { siteMeta } from "@/lib/site-data";
+export type SocialIconName = "email" | "linkedin" | "github" | "x";
 
-export const socialLinks = [
-  { href: `mailto:${siteMeta.email}`, label: "Email", icon: Mail },
-  { href: siteMeta.linkedin, label: "LinkedIn", icon: Linkedin },
-  { href: siteMeta.github, label: "GitHub", icon: Github },
-  { href: siteMeta.x, label: "X", icon: Twitter },
-];
+export function getSocialLinks(settings: Pick<CmsSiteSettings, "email" | "linkedin" | "github" | "x">) {
+  return [
+    { href: `mailto:${settings.email}`, label: "Email", iconName: "email" as const },
+    { href: settings.linkedin, label: "LinkedIn", iconName: "linkedin" as const },
+    { href: settings.github, label: "GitHub", iconName: "github" as const },
+    { href: settings.x, label: "X", iconName: "x" as const },
+  ];
+}

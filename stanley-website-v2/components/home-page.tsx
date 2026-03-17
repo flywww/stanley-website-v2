@@ -4,10 +4,9 @@ import { Briefcase, Layers3, MonitorSmartphone, Server } from "lucide-react";
 
 import { CountUpValue } from "@/components/count-up-value";
 import { PageShell } from "@/components/page-shell";
+import { getHomepageContent } from "@/lib/cms/queries";
 import { createHomeJsonLd } from "@/lib/seo";
-import { experienceHighlights, keySkills, metrics, products, siteMeta } from "@/lib/site-data";
 
-const featuredProducts = products.filter((product) => product.featured);
 const skillIcons = {
   "Front-end development": MonitorSmartphone,
   "Back-end development": Server,
@@ -15,21 +14,33 @@ const skillIcons = {
   "Product planning": Briefcase,
 } as const;
 
-function HeroSection() {
+const fallbackSkillIcons = [MonitorSmartphone, Server, Layers3, Briefcase] as const;
+
+function HeroSection({
+  avatar,
+  headline,
+  intro,
+  name,
+}: {
+  avatar: string;
+  headline: string;
+  intro: string;
+  name: string;
+}) {
   return (
     <section className="grid gap-10 pb-16 pt-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start lg:gap-18 lg:pb-20 lg:pt-10">
       <div className="w-full max-w-[220px]">
         <div className="relative aspect-[0.88] overflow-hidden rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface-strong)]">
-          <Image src={siteMeta.avatar} alt={siteMeta.name} fill sizes="(min-width: 1024px) 220px, 200px" className="object-cover object-center" priority />
+          <Image src={avatar} alt={name} fill sizes="(min-width: 1024px) 220px, 200px" className="object-cover object-center" priority />
         </div>
         <div className="mt-4 space-y-1">
-          <p className="text-xl font-semibold leading-tight">{siteMeta.name}</p>
+          <p className="text-xl font-semibold leading-tight">{name}</p>
           <p className="text-[0.95rem] leading-6 text-[color:var(--muted)]">林盈志</p>
         </div>
       </div>
       <div className="max-w-[740px]">
-        <h1 className="text-[clamp(3rem,6vw,5.2rem)] font-bold leading-[0.99]">{siteMeta.headline}</h1>
-        <p className="mt-6 max-w-[58ch] text-[1.05rem] leading-8 text-[color:var(--muted)]">{siteMeta.intro}</p>
+        <h1 className="text-[clamp(3rem,6vw,5.2rem)] font-bold leading-[0.99]">{headline}</h1>
+        <p className="mt-6 max-w-[58ch] text-[1.05rem] leading-8 text-[color:var(--muted)]">{intro}</p>
         <div className="mt-9 flex flex-wrap gap-3.5">
           <Link href="/projects" className="inline-flex min-h-12 items-center justify-center rounded-full bg-[color:var(--accent)] px-5 text-[0.95rem] font-semibold text-white">
             View Projects
@@ -43,14 +54,14 @@ function HeroSection() {
   );
 }
 
-function MetricsSection() {
+function MetricsSection({ metrics }: { metrics: { label: string; value: string }[] }) {
   return (
     <section className="relative left-1/2 right-1/2 -mx-[50vw] mb-28 w-screen">
       <div className="mx-auto max-w-[1240px] px-6 md:px-10">
         <div className="grid gap-0 md:grid-cols-3">
           {metrics.map((metric, index) => (
             <div
-              key={metric.label}
+              key={`${metric.label}-${index}`}
               className={`px-4 py-6 text-center md:px-8 md:py-8 ${
                 index === 0 ? "" : "border-t border-[color:var(--line)] md:border-l md:border-t-0"
               }`}
@@ -68,15 +79,16 @@ function MetricsSection() {
   );
 }
 
-function SkillsSection() {
+function SkillsSection({ skills }: { skills: { title: string; description: string }[] }) {
   return (
     <section className="pb-28">
       <div className="mb-10">
         <p className="text-[0.82rem] font-bold uppercase tracking-[0.08em] text-[color:var(--accent-soft)]">Key skills</p>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-        {keySkills.map((skill) => {
-          const Icon = skillIcons[skill.title as keyof typeof skillIcons];
+        {skills.map((skill, index) => {
+          const Icon = skillIcons[skill.title as keyof typeof skillIcons] ?? fallbackSkillIcons[index % fallbackSkillIcons.length];
+
           return (
             <div key={skill.title} className="rounded-[20px] border border-[color:var(--line)] bg-[color:var(--surface)] p-6">
               <div className="flex items-center gap-3">
@@ -94,8 +106,9 @@ function SkillsSection() {
   );
 }
 
-export function HomePage() {
-  const homeJsonLd = createHomeJsonLd();
+export async function HomePage() {
+  const { experienceItems, featuredProjects, metrics, settings, skills } = await getHomepageContent();
+  const homeJsonLd = createHomeJsonLd(settings);
 
   return (
     <PageShell>
@@ -105,11 +118,11 @@ export function HomePage() {
           __html: JSON.stringify(homeJsonLd),
         }}
       />
-      <HeroSection />
+      <HeroSection avatar={settings.avatarImageUrl} headline={settings.headline} intro={settings.intro} name={settings.name} />
 
-      <MetricsSection />
+      <MetricsSection metrics={metrics} />
 
-      <SkillsSection />
+      <SkillsSection skills={skills} />
 
       <section id="experience" className="pb-28">
         <div className="mx-auto max-w-5xl">
@@ -119,8 +132,8 @@ export function HomePage() {
           <h2 className="mt-2 text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.02]">Experience highlights</h2>
         </div>
         <div className="mx-auto mt-10 max-w-5xl space-y-10">
-          {experienceHighlights.map((item) => (
-            <div key={item.company} className="grid gap-5 md:grid-cols-[minmax(0,0.95fr)_42px_minmax(0,1.05fr)] md:items-start">
+          {experienceItems.map((item) => (
+            <div key={item.id} className="grid gap-5 md:grid-cols-[minmax(0,0.95fr)_42px_minmax(0,1.05fr)] md:items-start">
               <div className="text-left md:text-right">
                 <h3 className="text-2xl font-bold">{item.company}</h3>
                 <p className="mt-1 text-[0.9rem] font-medium text-[color:var(--muted)]">{item.time}</p>
@@ -158,15 +171,15 @@ export function HomePage() {
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          {featuredProducts.map((product) => (
+          {featuredProjects.map((product) => (
             <Link
-              key={product.slug}
+              key={product.id}
               href={`/projects/${product.slug}`}
               className="group overflow-hidden rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface)] transition hover:border-[color:var(--accent-soft)]"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src={product.featuredImage ?? product.gridImage}
+                  src={product.featuredImageUrl ?? product.gridImageUrl}
                   alt={product.name}
                   fill
                   sizes="(min-width: 1320px) 608px, (min-width: 768px) calc((100vw - 104px) / 2), calc(100vw - 48px)"

@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SiteSettings {
+  id                String   @id @default("site")
+  name              String
+  title             String
+  siteUrl           String
+  avatarImageUrl    String
+  defaultOgImageUrl String
+  eyebrow           String
+  headline          String
+  intro             String
+  email             String
+  location          String
+  linkedin          String
+  github            String
+  x                 String
+  footerHeadline    String
+  projectsPageTitle String
+  contactPageTitle  String
+  contactPageIntro  String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Metric {
+  id        String   @id @default(cuid())
+  label     String
+  value     String
+  sortOrder Int
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  sortOrder   Int
+}
+
+model ExperienceItem {
+  id        String   @id @default(cuid())
+  company   String
+  role      String
+  time      String
+  bullets   String[]
+  sortOrder Int
+}
+
+model Project {
+  id               String              @id @default(cuid())
+  slug             String              @unique
+  name             String
+  featured         Boolean             @default(false)
+  sortOrder        Int
+  featuredImageUrl String?
+  gridImageUrl     String
+  brief            String
+  roleTags         String[]
+  contributionTags String[]
+  problem          String[]
+  solution         String[]
+  outcome          String[]
+  capabilities     String[]
+  relatedSlugs     String[]
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  galleryImages    ProjectGalleryImage[]
+}
+
+model ProjectGalleryImage {
+  id        String   @id @default(cuid())
+  projectId String
+  src       String
+  alt       String
+  sortOrder Int
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
