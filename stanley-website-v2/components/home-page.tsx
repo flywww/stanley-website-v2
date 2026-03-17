@@ -20,7 +20,7 @@ function HeroSection() {
     <section className="grid gap-10 pb-16 pt-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:items-start lg:gap-18 lg:pb-20 lg:pt-10">
       <div className="w-full max-w-[220px]">
         <div className="relative aspect-[0.88] overflow-hidden rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface-strong)]">
-          <Image src={siteMeta.avatar} alt={siteMeta.name} fill sizes="220px" className="object-cover object-center" priority />
+          <Image src={siteMeta.avatar} alt={siteMeta.name} fill sizes="(min-width: 1024px) 220px, 200px" className="object-cover object-center" priority />
         </div>
         <div className="mt-4 space-y-1">
           <p className="text-xl font-semibold leading-tight">{siteMeta.name}</p>
@@ -169,7 +169,7 @@ export function HomePage() {
                   src={product.featuredImage ?? product.gridImage}
                   alt={product.name}
                   fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1320px) 608px, (min-width: 768px) calc((100vw - 104px) / 2), calc(100vw - 48px)"
                   className="object-cover transition duration-300 group-hover:scale-[1.03]"
                 />
               </div>

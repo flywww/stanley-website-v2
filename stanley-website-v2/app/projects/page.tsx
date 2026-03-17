@@ -36,7 +36,7 @@ export default function ProjectsPage() {
                 src={product.gridImage}
                 alt={product.name}
                 fill
-                sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1320px) 397px, (min-width: 1280px) calc((100vw - 128px) / 3), (min-width: 768px) calc((100vw - 104px) / 2), calc(100vw - 48px)"
                 className="object-cover transition duration-300 group-hover:scale-[1.03]"
               />
             </div>

@@ -57,7 +57,7 @@ export function ProjectGallery({
           alt={activeImage.alt}
           fill
           priority
-          sizes="(min-width: 1024px) 54vw, 100vw"
+          sizes="(min-width: 1320px) 670px, (min-width: 1024px) calc(54vw - 32px), calc(100vw - 48px)"
           className="animate-gallery-fade object-cover"
         />
       </div>
