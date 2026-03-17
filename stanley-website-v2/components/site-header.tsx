@@ -2,45 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Github, Linkedin, Mail, Menu, Twitter, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
+import { IconLink } from "@/components/icon-link";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { siteMeta } from "@/lib/site-data";
+import { socialLinks } from "@/lib/social-links";
 
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
-
-const iconLinks = [
-  { href: `mailto:${siteMeta.email}`, label: "Email", icon: Mail },
-  { href: siteMeta.linkedin, label: "LinkedIn", icon: Linkedin },
-  { href: siteMeta.github, label: "GitHub", icon: Github },
-  { href: siteMeta.x, label: "X", icon: Twitter },
-];
-
-function IconButton({
-  href,
-  icon: Icon,
-  label,
-}: {
-  href: string;
-  icon: typeof Mail;
-  label: string;
-}) {
-  return (
-    <a
-      href={href}
-      target={href.startsWith("mailto:") ? undefined : "_blank"}
-      rel={href.startsWith("mailto:") ? undefined : "noreferrer"}
-      aria-label={label}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--line)] bg-[color:var(--surface)] text-[color:var(--foreground)] transition hover:border-[color:var(--accent)]"
-    >
-      <Icon size={18} strokeWidth={1.9} />
-    </a>
-  );
-}
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,8 +25,8 @@ export function SiteHeader() {
             Stanley Lin
           </Link>
           <div className="hidden items-center gap-2 lg:flex">
-            {iconLinks.map((item) => (
-              <IconButton key={item.label} href={item.href} icon={item.icon} label={item.label} />
+            {socialLinks.map((item) => (
+              <IconLink key={item.label} href={item.href} icon={item.icon} label={item.label} />
             ))}
           </div>
         </div>
@@ -99,8 +71,8 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-5 flex flex-wrap gap-3">
-            {iconLinks.map((item) => (
-              <IconButton key={item.label} href={item.href} icon={item.icon} label={item.label} />
+            {socialLinks.map((item) => (
+              <IconLink key={item.label} href={item.href} icon={item.icon} label={item.label} />
             ))}
           </div>
           <Link

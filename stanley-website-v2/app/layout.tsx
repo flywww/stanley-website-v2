@@ -62,7 +62,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (() => {
-                const storageKey = "stanley-theme";
                 const stored = localStorage.getItem("stanley-theme");
                 const theme = stored === "light" || stored === "dark"
                   ? stored

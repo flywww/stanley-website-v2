@@ -13,18 +13,6 @@ html,
   color-scheme: light;
 }
 
-html[data-theme="light"] {
-  --background: #f2f2f2;
-  --foreground: #182229;
-  --surface: #ffffff;
-  --surface-strong: #f7f7f7;
-  --muted: #5b6770;
-  --accent: #004a7c;
-  --accent-soft: #005691;
-  --line: #cdcdcd;
-  color-scheme: light;
-}
-
 html[data-theme="dark"] {
   --background: #11161b;
   --foreground: #eef3f6;
